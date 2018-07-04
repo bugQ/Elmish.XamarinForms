@@ -24,6 +24,10 @@
         {
             "condition": "CreateiOSProject",
             "path": "NewApp.iOS\\NewApp.iOS.fsproj"
+        },
+        {
+            "condition": "CreateUWPProject",
+            "path": "NewApp.UWP\\NewApp.UWP.fsproj"
         }
         //{
         //    "condition": "CreateBackendProject",
@@ -35,7 +39,7 @@
         //}
     ],
     "defaultName": "App",
-    "preferNameDirectory": "true",
+    "preferNameDirectory": true,
     "guids": [
         "99E19497-29A6-4B77-B773-BEC55F9B55DC", // .NET Standard Library project identity
         "8D9F8CF0-E178-402D-8D40-A88B7B5F3D42", // Android project identity
@@ -119,6 +123,12 @@
             "replaces": "XamarinAndroidSdkVersion",
             "defaultValue": "27.0.2"
         },
+        "TargetUWPPlatformVersion": {
+            "type": "parameter",
+            "datatype": "string",
+            "replaces": "TargetUWPPlatformVersion",
+            "defaultValue": "10.0.16299.0"
+        },
         "XamarinEssentialsSdk": {
             "type": "parameter",
             "dataType": "string",
@@ -192,11 +202,11 @@
             "dataType": "bool",
             "defaultValue": "true"
         }
-        //"CreateUWPProject": {
-        //    "type": "parameter",
-        //    "dataType": "bool",
-        //    "defaultValue": "true"
-        //},
+        "CreateUWPProject": {
+            "type": "parameter",
+            "dataType": "bool",
+            "defaultValue": "true"
+        },
         //"CreateBackendProject": {
         //    "type": "parameter",
         //    "dataType": "bool",
@@ -239,12 +249,12 @@
                         "NewApp.Android/**/*"
                     ]
                 },
-                ////{
-                //    "condition": "(!CreateUWPProject)",
-                //    "exclude": [
-                //        "NewApp.UWP/**/*"
-                //    ]
-                //},
+                {
+                    "condition": "(!CreateUWPProject)",
+                    "exclude": [
+                        "NewApp.UWP/**/*"
+                    ]
+                },
                 {
                     "condition": "(!CreateMacProject)",
                     "exclude": [
@@ -281,12 +291,12 @@
                         "NewApp.Android/**/*"
                     ]
                 },
-                //{
-                //    "condition": "(!CreateUWPProject)",
-                //    "exclude": [
-                //        "NewApp.UWP/**/*"
-                 //   ]
-                //},
+                {
+                    "condition": "(!CreateUWPProject)",
+                    "exclude": [
+                        "NewApp.UWP/**/*"
+                   ]
+                },
                 {
                     "condition": "(!CreateMacProject)",
                     "exclude": [
